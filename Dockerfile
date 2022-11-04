@@ -1,10 +1,11 @@
+
 ARG PHP_VERSION
 
 FROM php:${PHP_VERSION}-apache
 
-ARG PHALCON_VERSION
+MAINTAINER  wilson.mendoza@bodytechcorp.com
 
-WORKDIR /var/www/html
+ARG PHALCON_VERSION
 
 RUN a2enmod rewrite
 
@@ -15,10 +16,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./scripts/* /tmp
 
 RUN chmod +x /tmp/*.sh
-
 RUN /tmp/install_phalcon.sh ${PHALCON_VERSION}
 RUN /tmp/install_exts.sh
 
 RUN echo "extension=phalcon.so" > /usr/local/etc/php/conf.d/phalcon.ini
 
-    
+WORKDIR /var/www/html
