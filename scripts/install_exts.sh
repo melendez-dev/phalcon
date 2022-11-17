@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXTS=(pdo pdo_mysql pdo_pgsql gd)
+EXTS=(pdo pdo_mysql pdo_pgsql gd psr)
 
 for EXT in ${EXTS[@]}; do
     docker-php-ext-install $EXT
