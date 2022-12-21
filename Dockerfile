@@ -3,7 +3,7 @@ ARG PHP_VERSION
 
 FROM php:${PHP_VERSION}-apache
 
-MAINTAINER  wilson.mendoza@bodytechcorp.com
+LABEL MAINTAINER="wilson.mendoza@bodytechcorp.com"
 
 ARG PHALCON_VERSION
 
