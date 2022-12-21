@@ -7,6 +7,7 @@ PROJECTS=(
     "API-WEBATH-v2"
     "Api-BodyTech"
     "API-WEBPERU-v2"
+    "API-MYBODYTECH"
 )
 
 ./build.sh
@@ -22,7 +23,7 @@ then
 fi
 
 cp ./docker-compose.yml $PHALCON_PATH/docker-compose.yml
-docker-compose up -d
+docker-compose -f $PHALCON_PATH/docker-compose.yml up -d
 
 if [[ ! -d $PHALCON_PATH/projects ]];
 then
@@ -42,16 +43,17 @@ do
         git pull
     else
         git clone $GITHUB_ORG/$project.git -b develop $PROJECTS_FOLDER_PATH/$project
-        echo -e "127.0.0.1\t$DOMAIN.local" | sudo tee -a /etc/hosts
+        if ! grep "/$DOMAIN.local/" /etc/hosts;
+        then
+            echo -e "127.0.0.1\t$DOMAIN.local" | sudo tee -a /etc/hosts
+        fi
     fi
 
     if [[ ! -f $PHALCON_PATH/httpd/vhosts/$DOMAIN.local.conf ]];
     then
         echo -e "<VirtualHost *:80>
         ServerName $DOMAIN.local
-        DocumentRoot /var/www/html/$project
-
-        ErrorDocument 404 /var/www/html/404.html
+        DocumentRoot /var/www/html/$project/application
 
         ErrorLog /var/log/apache2/$DOMAIN.local-error.log
         CustomLog /var/log/apache2/$DOMAIN.local-access.log combined
