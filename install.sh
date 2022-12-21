@@ -29,9 +29,6 @@ then
     ln -s $PROJECTS_FOLDER_PATH $PHALCON_PATH/projects
 fi
 
-cp ./404.html $PHALCON_PATH/projects/404.html
-
-
 for project in "${PROJECTS[@]}"
 do
     DOMAIN=$(echo $project | tr '[:upper:]' '[:lower:]')
