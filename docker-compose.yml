@@ -1,0 +1,13 @@
+
+version: '3'
+services:
+  phalcon:
+    container_name: phalcon3
+    image: phalcon:3.4
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./httpd/logs:/var/log/apache2
+      - ./projects:/var/www/html
+      - ./httpd/vhosts:/etc/apache2/sites-enabled
