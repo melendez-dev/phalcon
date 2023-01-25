@@ -3,11 +3,10 @@
 PHALCON_PATH="$HOME/phalcon"
 PROJECTS_FOLDER_PATH="$HOME/Desktop/BODYTECH_PROJECTS"
 GITHUB_ORG="git@github.com:BodyTech-Dev"
+
+# Aquí se agrega el nombre de los proyectos que se quieren clonar
 PROJECTS=(
-    "API-WEBATH-v2"
-    "Api-BodyTech"
-    "API-WEBPERU-v2"
-    "API-MYBODYTECH"
+    
 )
 
 ./build.sh
