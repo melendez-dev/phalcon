@@ -4,8 +4,7 @@ PHALCON_PATH="$HOME/phalcon"
 PROJECTS_FOLDER_PATH="$HOME/Desktop/BODYTECH_PROJECTS"
 GITHUB_ORG="git@github.com:BodyTech-Dev"
 PROJECTS=(
-    "API-WEBPERU-v2"
-    "API-WEBATH-v2"
+
 )
 
 ./build.sh
@@ -51,7 +50,7 @@ do
     then
         echo -e "<VirtualHost *:80>
         ServerName $DOMAIN.local
-        DocumentRoot /var/www/html/$project/application
+        DocumentRoot /var/www/html/$project
 
         ErrorLog /var/log/apache2/$DOMAIN.local-error.log
         CustomLog /var/log/apache2/$DOMAIN.local-access.log combined
@@ -63,6 +62,8 @@ do
         </Directory>
         </VirtualHost>" | sudo tee $PHALCON_PATH/httpd/vhosts/$DOMAIN.local.conf
     fi
+
+    docker exec phalcon3 bash -c "cd /var/www/html/$project && composer install"
 done
 
 docker restart phalcon3
