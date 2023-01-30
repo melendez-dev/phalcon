@@ -6,7 +6,7 @@ GITHUB_ORG="git@github.com:BodyTech-Dev"
 
 # Aquí se agrega el nombre de los proyectos que se quieren clonar
 PROJECTS=(
-    
+
 )
 
 ./build.sh
@@ -64,6 +64,8 @@ do
         </Directory>
         </VirtualHost>" | sudo tee $PHALCON_PATH/httpd/vhosts/$DOMAIN.local.conf
     fi
+
+    docker exec phalcon bash -c "cd /var/www/html/$project && composer install"
 done
 
 docker restart phalcon
