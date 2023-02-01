@@ -39,7 +39,7 @@ docker exec phalcon bash -c "cd /var/www/html/[nombre de la carpeta del proyecto
 	- **Solución:** ejecutamos los siguientes comandos
 	```bash
 	rm -rf ~/phalcon/projects
-	ln -s ~/Desktop/BODYTECH PROJECTS ~/phalcon/projects
+	ln -s ~/Desktop/BODYTECH_PROJECTS ~/phalcon/projects
 	```
 
 ## Versiones
