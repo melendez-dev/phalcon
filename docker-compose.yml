@@ -2,8 +2,8 @@
 version: '3'
 services:
   phalcon:
-    container_name: phalcon3
-    image: phalcon:3.4
+    container_name: phalcon
+    image: phalcon:3.4-xdebug
     restart: always
     ports:
       - "80:80"
