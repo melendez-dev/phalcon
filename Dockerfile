@@ -27,6 +27,10 @@ RUN echo -e "extension=psr.so\nextension=phalcon.so" > /usr/local/etc/php/conf.d
 RUN pecl install xdebug-2.9.0
 RUN docker-php-ext-enable xdebug
 RUN echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20160303/xdebug.so" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+# install redis
+RUN pecl install redis && docker-php-ext-enable redis
+
 # relevant to this answer
 RUN echo "xdebug.idekey="VSCODE"" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
